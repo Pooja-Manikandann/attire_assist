@@ -39,3 +39,24 @@
     background: #2A55E5;
     color: #fff;
 }
+
+.button {
+    width: 10%;
+    margin: 20px auto;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #1d3322;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+}
+
+textarea {
+    position: absolute;
+    bottom: 12%;
+    left: 12%;
+}

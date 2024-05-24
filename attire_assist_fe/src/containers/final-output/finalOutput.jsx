@@ -3,8 +3,8 @@ import getFitService from "../../service/fitImageService";
 import Grid from "../../components/Grid/Grid";
 
 const FinalOutput = (props) => {
-  const { attire, fit } = props;
-  const dressArray = getFitService(attire.toLowerCase(), fit.toLowerCase());
+  const { attire, fit, setPage } = props;
+  const dressArray = getFitService(attire.toLowerCase(), fit?.toLowerCase());
 
 
   console.log('dressArray', attire, fit, dressArray)
@@ -22,8 +22,9 @@ const FinalOutput = (props) => {
     <>
       <div className={styles.wrapper}>
         <div className={styles.dressContainer}>{dressCards}</div>
-
+        <button className={styles.button} onClick={() => {setPage(3)}}>Back</button>
       </div>
+        <textarea cols={30} rows={3} placeholder="Add your feedback here"></textarea>
         
     </>
   );

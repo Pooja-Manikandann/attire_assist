@@ -8,7 +8,8 @@ export const getImageFitService = async(baseUrl) => {
     const response = await Axios.request({
         url: "http://localhost:3000/glam/fitForImage",
         data: requestBody,
-        method: "POST"
+        method: "POST",
+        headers:{ "Access-Control-Allow-Origin": "*"}
     })
 
     return response.data;

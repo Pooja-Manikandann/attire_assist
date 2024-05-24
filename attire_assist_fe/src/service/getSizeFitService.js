@@ -1,7 +1,6 @@
 import Axios from 'axios';
 
 export const getSizeFitService = async(data) => {
-    console.log('data', data)
     const response = await Axios.request({
         url: "http://localhost:3000/glam/fit",
         data: data,

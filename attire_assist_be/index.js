@@ -3,6 +3,8 @@ let express = require("express");
 const app = express();
 const fitRoutes = require('./router/route');
 const cors = require('cors');
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cors())
 app.use(express.urlencoded({extended:false}));

@@ -9,7 +9,7 @@ import { getImageFitService } from '../../service/getImageFitService';
 
 const ImageUpload = (props) => {
 
-    const {setType, setBodyType} = props;
+    const {setType, setBodyType , setPage} = props;
     const [imageFile, setImageFile] = useState("");
     const [file, setFile] = useState();
     const [baseURL, setBaseURL] = useState("");
@@ -19,7 +19,7 @@ const ImageUpload = (props) => {
         var data = acceptedFiles.map(file => {
           setFile(file);
           return Object.assign(file, {
-          preview: new URL.createObjectURL(file)
+          preview: URL.createObjectURL(file)
         })})
         setImageFile(data[0].preview);
         imageUploaded();
@@ -30,7 +30,7 @@ const ImageUpload = (props) => {
         
     }
     const handleFileUpload = (e) => {
-      setImageFile(new URL.createObjectURL(e.target.files[0]));
+      setImageFile(URL.createObjectURL(e.target.files[0]));
       imageUploaded();
     }
     function imageUploaded() {
@@ -38,7 +38,7 @@ const ImageUpload = (props) => {
       var base64String;
 
       reader.onload = function () {
-          base64String = new reader.result.replace("data:", "")
+          base64String = reader.result.replace("data:", "")
               .replace(/^.+,/, "");
             console.log(base64String)
           setBaseURL(base64String);
@@ -47,7 +47,8 @@ const ImageUpload = (props) => {
   }
   async function calculate() {
     const data = await getImageFitService(baseURL);
-    setBodyType(data.fit)
+    setBodyType(data.name)
+    setPage(3);
   }
   useEffect(()=>{
     file && imageUploaded();

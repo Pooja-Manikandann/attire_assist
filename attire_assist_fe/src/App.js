@@ -26,15 +26,16 @@ function App() {
 
 
   console.log('dressType', dressType, bodyType)
+
   return (
     <div className="App">
-      <Header />      
+      <Header setPage={setPage} />      
       
       {page===1?
       <Gender gender={gender} setGender={setGender} handleNextClick={handleNextClick}  />: 
       page===2? <Selection gender={gender} setBodyType={setBodyType} type={type} setType={setType} handleNextClick={handleNextClick} setPage={setPage} />:
       page ===3? <Attiretype dressType={dressType} gender={gender} handleAttireClick={handleAttireSelect} handleNextPage={handleNextClick}/> :
-      page===4? <FinalOutput attire={dressType} fit={bodyType}/> : <></>}
+      page===4? <FinalOutput setPage={setPage} attire={dressType} fit={bodyType}/> : <></>}
       <div>
 
       </div>

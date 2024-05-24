@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 const sizeFitRecommendationService = (req, res) => {
     console.log('in ser', req.body);
     let BAI;
@@ -55,20 +57,9 @@ const sizeFitRecommendationService = (req, res) => {
     return fitResponse;
 }
 
-const imageToFitRecommendationService = ()=>{
-    
-}
-
-const base64toImage = (image) => {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(image);
-        reader.onloadend = () => {
-            const baseURL = reader.result;
-            resolve(baseURL);
-        };
-        reader.onerror = reject;
-    })
+const imageToFitRecommendationService = async (req,res)=>{
+    let response = await axios.post('http://127.0.0.1:8000/print',{url:req.body.url});
+    return response.data;
 }
 
 module.exports = { sizeFitRecommendationService,imageToFitRecommendationService }
